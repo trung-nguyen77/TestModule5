@@ -1,0 +1,138 @@
+<div class="container">
+  <h2>Book Management</h2>
+  <p></p>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate">
+    New Book
+  </button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Book name</th>
+      <th>Writer</th>
+      <th colspan="2">Active</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngFor="let book of books">
+      <td>{{book.id}}</td>
+      <td><button type="button" class="btn btn-link" (click)="showDetails(book)" data-toggle="modal" data-target="#modalDetail">{{book.title}}</button></td>
+      <td>{{book.author}}</td>
+      <td><button type="button" class="btn btn-success" (click)="showEdit(book)" data-toggle="modal" data-target="#modalEdit">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="delete(book.id)">Delete</button></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<!--the Modal Create-->
+<div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Create Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="book.id" placeholder="book id" >
+        <br>
+        <input [(ngModel)]="book.title" placeholder="book name">
+        <br>
+        <input [(ngModel)]="book.author" placeholder="writer">
+        <br>
+        <input [(ngModel)]="book.description" placeholder="description">
+        <br>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="create(book)" class="btn btn-primary" data-dismiss="modal">Create</button>
+        <button type="button" (click)="close()" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--the Modal Edit-->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Edit Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="book.id" placeholder="book id" readonly>
+        <br>
+        <input [(ngModel)]="book.title" placeholder="book name" >
+        <br>
+        <input [(ngModel)]="book.author" placeholder="writer">
+        <br>
+        <input [(ngModel)]="book.description" placeholder="description">
+        <br>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="edit(book)" class="btn btn-success" data-dismiss="modal">Edit</button>
+        <button type="button" (click)="close()" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--&lt;!&ndash;the Modal Delete&ndash;&gt;-->
+<!--<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" >Delete Book</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <input [(ngModel)]="book.id" placeholder="book id" readonly>-->
+<!--        <br>-->
+<!--        <input [(ngModel)]="book.title" placeholder="book name" >-->
+<!--        <br>-->
+<!--        <input [(ngModel)]="book.author" placeholder="writer">-->
+<!--        <br>-->
+<!--        <input [(ngModel)]="book.description" placeholder="description">-->
+<!--        <br>-->
+
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" (click)="delete(id)" class="btn btn-danger" data-dismiss="modal">Delete</button>-->
+<!--        <button type="button" (click)="close()" class="btn btn-warning" data-dismiss="modal">Close</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--the Modal Detail-->
+<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Detail Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input [(ngModel)]="book.id" placeholder="product id" readonly>
+        <br>
+        <input [(ngModel)]="book.title" placeholder="product name" >
+        <br>
+        <input [(ngModel)]="book.author" placeholder="writer">
+        <br>
+        <input [(ngModel)]="book.description" placeholder="description">
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="close()" class="btn btn-warning" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
